@@ -10,6 +10,7 @@
 .que_img {
   max-height: 300px;
   min-height: 150px;
+  width: 320px;
 }
 
 body {
