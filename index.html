@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>挑戰 - 弧長公式</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- FontAweome CDN Link for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>
+    <script
+  			src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  	<script src='https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML'></script>
+  	<script type="text/x-mathjax-config">
+  		MathJax.Hub.Config({
+  			tex2jax: {inlineMath: [["$","$"],["\\(","\\)"]]}
+  		});
+  	</script>
+
+</head>
+<body>
+
+
+    <!-- start Quiz button -->
+    <div id="start_btn" class="start_btn"><button><b>開始測驗！</b></button></div>
+    <div class="result_btn" id="resultBtn"><button><b>排行榜</b></button></div>
+
+
+    <!-- Info Box -->
+    <div class="info_box">
+        <div class="info-title"><span>規則說明</span></div>
+        <div class="info-list">
+            <div class="info">一. 本測驗共有四條問題。</div>
+            <div class="info">二. 每條問題只有<span> 30 秒</span> 作答時間。</div>
+            <div class="info">三. 一旦選擇了答案，便無法作出更改。</div>
+            <div class="info">四. 超過時限後，你便無法回答該問題。</div>
+            <div class="info">五. 請輸入
+              <select class="classBtn" name="cars" id="class">
+                <option value="" disabled selected>班別</option>
+                <option value="2D">2D</option>
+              </select>
+              及
+              <select class="classNoBtn" name="cars" id="classNo" height= 20px;>
+                <option value="" disabled selected>學號</option>
+                <option value="3">03</option>
+                <option value="4">04</option>
+                <option value="5">05</option>
+                <option value="7">07</option>
+                <option value="8">08</option>
+                <option value="9">09</option>
+                <option value="10">10</option>
+                <option value="11">11</option>
+                <option value="12">12</option>
+                <option value="13">13</option>
+                <option value="14">14</option>
+                <option value="16">16</option>
+                <option value="19">19</option>
+                <option value="20">20</option>
+                <option value="21">21</option>
+                <option value="22">22</option>
+                <option value="23">23</option>
+                <option value="24">24</option>
+                <option value="25">25</option>
+                <option value="26">26</option>
+
+              </select>
+              。</div>
+              <div class="info">六. 請輸入密碼：<input type="password" id="pw" height=20px;></input></div>
+        </div>
+        <div class="buttons">
+            <button class="quit">離開</button>
+            <button class="restart" id="startBtn">開始</button>
+        </div>
+    </div>
+
+    <!-- Quiz Box -->
+    <div class="quiz_box">
+        <header>
+            <div class="title">挑戰 - 弧長公式</div>
+            <div class="timer">
+                <div class="time_left_txt">剩餘時間</div>
+                <div class="timer_sec">40</div>
+            </div>
+            <div class="time_line"></div>
+        </header>
+        <section>
+            <div class="que_img">
+              <!-- Here I've inserted question figure from JavaScript -->
+            </div>
+            <div class="que_text">
+                <!-- Here I've inserted question from JavaScript -->
+            </div>
+            <div class="option_list">
+                <!-- Here I've inserted options from JavaScript -->
+            </div>
+        </section>
+
+        <!-- footer of Quiz Box -->
+        <footer>
+            <div class="total_que">
+                <!-- Here I've inserted Question Count Number from JavaScript -->
+            </div>
+            <button class="next_btn" id="next_btn">下一題</button>
+        </footer>
+
+    </div>
+
+    <!-- Result Box -->
+    <div class="result_box">
+        <div class="icon">
+            <i class="fas fa-crown"></i>
+        </div>
+        <div class="complete_text"><b>你已完成本測驗！</b></div>
+        <div class="score_text">
+            <!-- Here I've inserted Score Result from JavaScript -->
+        </div>
+        <div class="buttons">
+            <button class="restart">重新挑戰</button>
+            <button class="quit">離開</button>
+        </div>
+    </div>
+
+    <div class="result_table">
+        <table class="score_table" id="resultTable" >
+          <tr><th>班別</th><th>學號</th><th>姓名</th><th>第一題</th><th>第二題</th><th>第三題</th><th>第四題</th><th>答對題數</th><th>所需時間</th></tr>
+          <tr id="row3"><th>2D</th><th>3</th><th>周暻寧</th><th></th><th></th><th></th><th></th><th></th><th></th></tr>
+          <tr id="row4"><th>2D</th><th>4</th><th>鄭汶臻</th><th></th><th></th><th></th><th></th><th></th><th></th></tr>
+          <tr id="row5"><th>2D</th><th>5</th><th>詹承晉</th><th></th><th></th><th></th><th></th><th></th><th></th></tr>
+          <tr id="row7"><th>2D</th><th>7</th><th>李俊華</th><th></th><th></th><th></th><th></th><th></th><th></th></tr>
+          <tr id="row8"><th>2D</th><th>8</th><th>李佩欣</th><th></th><th></th><th></th><th></th><th></th><th></th></tr>
+          <tr id="row9"><th>2D</th><th>9</th><th>利泳熙</th><th></th><th></th><th></th><th></th><th></th><th></th></tr>
+          <tr id="row10"><th>2D</th><th>10</th><th>梁凱茵</th><th></th><th></th><th></th><th></th><th></th><th></th></tr>
+          <tr id="row11"><th>2D</th><th>11</th><th>梁樂天</th><th></th><th></th><th></th><th></th><th></th><th></th></tr>
+          <tr id="row12"><th>2D</th><th>12</th><th>梁心賢</th><th></th><th></th><th></th><th></th><th></th><th></th></tr>
+          <tr id="row13"><th>2D</th><th>13</th><th>李傑豪</th><th></th><th></th><th></th><th></th><th></th><th></th></tr>
+          <tr id="row14"><th>2D</th><th>14</th><th>盧柏希</th><th></th><th></th><th></th><th></th><th></th><th></th></tr>
+          <tr id="row16"><th>2D</th><th>16</th><th>吳晞瑜</th><th></th><th></th><th></th><th></th><th></th><th></th></tr>
+          <tr id="row19"><th>2D</th><th>19</th><th>施澤棟</th><th></th><th></th><th></th><th></th><th></th><th></th></tr>
+          <tr id="row20"><th>2D</th><th>20</th><th>杜郁雄</th><th></th><th></th><th></th><th></th><th></th><th></th></tr>
+          <tr id="row21"><th>2D</th><th>21</th><th>謝俊闈</th><th></th><th></th><th></th><th></th><th></th><th></th></tr>
+          <tr id="row22"><th>2D</th><th>22</th><th>王家濠</th><th></th><th></th><th></th><th></th><th></th><th></th></tr>
+          <tr id="row23"><th>2D</th><th>23</th><th>王藝泓</th><th></th><th></th><th></th><th></th><th></th><th></th></tr>
+          <tr id="row24"><th>2D</th><th>24</th><th>黃子澄</th><th></th><th></th><th></th><th></th><th></th><th></th></tr>
+          <tr id="row25"><th>2D</th><th>25</th><th>邱鈞暘</th><th></th><th></th><th></th><th></th><th></th><th></th></tr>
+          <tr id="row26"><th>2D</th><th>26</th><th>葉肇熙</th><th></th><th></th><th></th><th></th><th></th><th></th></tr>
+
+
+
+        </table>
+    </div>
+
+    <!-- Inside this JavaScript file I've inserted Questions and Options only -->
+    <script src="questions.js"></script>
+
+    <!-- Inside this JavaScript file I've coded all Quiz Codes -->
+    <script src="script.js"></script>
+
+    <script type="module" >
+    // Import the functions you need from the SDKs you need
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/9.8.1/firebase-app.js";
+    import { getAnalytics } from "https://www.gstatic.com/firebasejs/9.8.1/firebase-analytics.js";
+
+    // TODO: Add SDKs for Firebase products that you want to use
+    // https://firebase.google.com/docs/web/setup#available-libraries
+
+    // Your web app's Firebase configuration
+    // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+    const firebaseConfig = {
+      apiKey: "AIzaSyBxFYL1Pgyn57moVUQJb9IIyMvBqDEZwpY",
+      authDomain: "quizapp-ab40c.firebaseapp.com",
+      databaseURL: "https://quizapp-ab40c-default-rtdb.firebaseio.com",
+      projectId: "quizapp-ab40c",
+      storageBucket: "quizapp-ab40c.appspot.com",
+      messagingSenderId: "576866828869",
+      appId: "1:576866828869:web:4b91f84b04877e8c9c592c",
+      measurementId: "G-ZLLZ8VX3VK"
+    };
+
+    // Initialize Firebase
+    const app = initializeApp(firebaseConfig);
+    const analytics = getAnalytics(app);
+
+    import {getDatabase, get, ref, set, child, update, remove, push, onValue}
+    from "https://www.gstatic.com/firebasejs/9.8.1/firebase-database.js";
+
+    const db = getDatabase();
+
+    //---------------------References-------------------------------------//
+    var startBtn = document.getElementById("startBtn");
+    var resultBtn = document.getElementById("resultBtn");
+    var nextBtn= document.getElementById("next_btn");
+    var cla = document.getElementById("class");
+    var classNo = document.getElementById("classNo");
+    var total_time = 0;
+
+    //---------------------Insert Function-------------------------------------//
+    function InsertData(){
+      set(ref(db, "TheStudents/"+ rollbox.value),{
+        NameOfStd: namebox.value,
+        RollNo: rollbox.value,
+        Section: secbox.value,
+        Gender: genbox.value
+      })
+      .then(()=>{
+        alert("data stored successfully");
+      })
+      .catch((error)=>{
+        alert("unsuccessful, error" + error);
+      });
+    }
+    //---------------------Select Function-------------------------------------//
+    function selectData(){
+      const dbref = ref(db);
+
+      get(child(dbref, "Quiz1/" + rollbox.value)).then((snapshot)=>{
+        if(snapshot.exists()){
+          namebox.value = snapshot.val().NameOfStd;
+          secbox.value = snapshot.val().Section;
+          genbox.value = snapshot.val().Gender;
+        }
+        else{
+          alert("No data found");
+        }
+      })
+      .catch((error)=>{
+        alert("unsuccessful, error" + error);
+      });
+    }
+
+    //------------------------countNoOfPlay----------------------------------------//
+
+    function countNoOfPlay(){
+      const dbref = ref(db);
+
+      get(child(dbref, "Quiz1/" + cla.value + "/" + classNo.value + "/NumOfPlay" )).then((snapshot)=>{
+        if (cla.value!="" && classNo.value!=""){
+        if(snapshot.exists()){
+          update(ref(db, "Quiz1/" + cla.value + "/" + classNo.value),{
+            NumOfPlay: snapshot.val() + 1
+          });
+        }
+        else{
+          set(ref(db, "Quiz1/"+ cla.value + "/" + classNo.value),{
+            NumOfPlay: 1,
+          });
+        }
+      }});
+    }
+
+    //------------------------record students' choice ----------------------------------------//
+      function recordChoice(answer){
+        total_time = total_time + time_used;
+        const dbref = ref(db);
+        get(child(dbref, "Quiz1/" + cla.value + "/" + classNo.value + "/NumOfPlay" )).then((snapshot)=>{
+          console.log(snapshot.val());
+          if(que_count==1){
+            set(ref(db, "Quiz1/"+ cla.value + "/" + classNo.value + "/game" + snapshot.val()),{
+              userScore: userScore
+            });
+          }else{
+            update(ref(db, "Quiz1/"+ cla.value + "/" + classNo.value + "/game" + snapshot.val().toString()),{
+              userScore: userScore
+            });
+          }
+            update(ref(db, "Quiz1/"+ cla.value + "/" + classNo.value + "/game" + snapshot.val().toString() + "/question" + que_count),{
+              option : user_option,
+              time : time_used
+            });
+          if(que_count==4){
+            update(ref(db, "Quiz1/"+ cla.value + "/" + classNo.value + "/game" + snapshot.val().toString()),{
+              Total_Time: total_time
+            });
+          }
+          });
+        }
+
+
+    //---------------------Assign Events To Btns------------------------------------//
+      startBtn.addEventListener('click', countNoOfPlay);
+      nextBtn.addEventListener('click', recordChoice);
+      //resultBtn.addEventListener('click', updateResultTable);
+
+      //---------------get result from database to table-----------------//
+      const dbref = ref(db);
+      const studentData = ref(db,"Quiz1/2D/");
+      onValue(studentData, snapshot=>{
+        if(snapshot.exists()){
+        for (let i = 1; i<27; i++){
+            if(typeof snapshot.val()[i]!== "undefined"){
+                get(child(dbref, "Quiz1/2D/" + i + "/game1/question1/option")).then((snapshot2)=>{
+                  if(snapshot2.val()==questions[0].answer){
+                  var x = document.getElementById("row"+i);
+                    x.cells[3].innerHTML = "✔";
+                  }else{
+                    var x = document.getElementById("row"+i);
+                    x.cells[3].innerHTML = "✖"
+                  }
+                  });
+                  get(child(dbref, "Quiz1/2D/" + i + "/game1/question2/option")).then((snapshot2)=>{
+                    if(snapshot2.val()==questions[1].answer){
+                    var x = document.getElementById("row"+i);
+                      x.cells[4].innerHTML = "✔";
+                    }else{
+                      var x = document.getElementById("row"+i);
+                      x.cells[4].innerHTML = "✖"
+                    }
+                    });
+                    get(child(dbref, "Quiz1/2D/" + i + "/game1/question3/option")).then((snapshot2)=>{
+                      if(snapshot2.val()==questions[2].answer){
+                      var x = document.getElementById("row"+i);
+                        x.cells[5].innerHTML = "✔";
+                      }else{
+                        var x = document.getElementById("row"+i);
+                        x.cells[5].innerHTML = "✖"
+                      }
+                      });
+                      get(child(dbref, "Quiz1/2D/" + i + "/game1/question4/option")).then((snapshot2)=>{
+                        if(snapshot2.val()==questions[3].answer){
+                        var x = document.getElementById("row"+i);
+                          x.cells[6].innerHTML = "✔";
+                        }else{
+                          var x = document.getElementById("row"+i);
+                          x.cells[6].innerHTML = "✖"
+                        }
+                        });
+                get(child(dbref, "Quiz1/2D/" + i + "/game1/userScore")).then((snapshot2)=>{
+                  console.log(i);
+                  var x = document.getElementById("row"+i);
+                    x.cells[7].innerHTML = snapshot2.val();
+                  });
+                  get(child(dbref, "Quiz1/2D/" + i + "/game1/Total_Time")).then((snapshot2)=>{
+                    console.log(i);
+                    var x = document.getElementById("row"+i);
+                      x.cells[8].innerHTML = snapshot2.val();
+                    });
+                }
+            }
+          }
+        });
+
+
+
+    </script>
+
+    <script>
+        //-----------------------------Sorting Table-----------------------------------//
+        const getCellValue = (tr, idx) => tr.children[idx].innerText || tr.children[idx].textContent;
+
+        const comparer = (idx, asc) => (a, b) => ((v1, v2) =>
+        v1 !== '' && v2 !== '' && !isNaN(v1) && !isNaN(v2) ? v1 - v2 : v1.toString().localeCompare(v2)
+        )(getCellValue(asc ? a : b, idx), getCellValue(asc ? b : a, idx));
+
+        // do the work...
+        document.querySelectorAll('th').forEach(th => th.addEventListener('click', (() => {
+            const table = th.closest('table');
+            Array.from(table.querySelectorAll('tr:nth-child(n+2)'))
+                .sort(comparer(Array.from(th.parentNode.children).indexOf(th), this.asc = !this.asc))
+                .forEach(tr => table.appendChild(tr) );
+        })));
+    </script>
+
+
+</body>
+</html>
